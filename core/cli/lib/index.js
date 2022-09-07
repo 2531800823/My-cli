@@ -4,18 +4,28 @@ module.exports = core;
 
 const semver = require('semver');
 const colors = require('colors');
+const { homedir } = require('os');
 
 const pkg = require('../package.json');
 const log = require('@liushipeng/log');
 const constant = require('./const');
+const { pathExists } = require('./utils');
 
 function core() {
   try {
     checkPkgVersion();
     checkNodeVersion();
     checkRoot();
+    checkUserHome();
   } catch (e) {
     log.error(e.message);
+  }
+}
+
+async function checkUserHome() {
+  // 判断根目录是否存在
+  if (!(await pathExists(homedir()))) {
+    throw new Error(colors.red('当前登录用户的主目录不存在!!! '));
   }
 }
 
