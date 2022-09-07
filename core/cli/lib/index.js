@@ -10,7 +10,7 @@ const { pathExists } = require('./utils');
 const pkg = require('../package.json');
 const log = require('@liushipeng-cli/log');
 const constant = require('./const');
-const { getNpmInfo } = require('@liushipeng-cli/get-npm-info');
+const { getNewNpmVersion } = require('@liushipeng-cli/get-npm-info');
 
 function core() {
   try {
@@ -25,14 +25,18 @@ function core() {
   }
 }
 
-function checkGlobalUpdate() {
+async function checkGlobalUpdate() {
   // 对比当前版本是否是最新
   // 获取当前版本和模块名
   const currentVersion = pkg.version;
   const npmName = pkg.name;
   // 调用 npm Api 获取版本号
-  getNpmInfo(npmName);
   // 提取最大的版本号
+  const newVersion = await getNewNpmVersion('liushipeng-cli');
+  if (newVersion && semver.gt(newVersion, currentVersion)) {
+    // TODO 等待更新
+    log.warn(` 请手动更新到最新版本 ${newVersion} ,使用 npm i @liushipeng-cli/cli`);
+  }
   // 获取最新版本号，提示用户更新到最新
 }
 
