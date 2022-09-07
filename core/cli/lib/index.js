@@ -10,8 +10,18 @@ const log = require('@liushipeng/log');
 const constant = require('./const');
 
 function core() {
-  checkPkgVersion();
-  checkNodeVersion();
+  try {
+    checkPkgVersion();
+    checkNodeVersion();
+    checkRoot();
+  } catch (e) {
+    log.error(e.message);
+  }
+}
+
+function checkRoot() {
+  // 尝试降低具有 root 权限的进程的权限，如果失败，则阻止访问
+  require('root-check')();
 }
 
 function checkNodeVersion() {

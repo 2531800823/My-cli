@@ -16,6 +16,7 @@
     "@liushipeng/log": "workspace:^1.0.0",
     "colors": "^1.4.0",
     "import-local": "^3.1.0",
+    "root-check": "^1.0.0",
     "semver": "^7.3.7"
   },
   "private": false
