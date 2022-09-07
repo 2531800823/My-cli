@@ -13,6 +13,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@liushipeng/get-npm-info": "workspace:^1.0.0",
     "@liushipeng/log": "workspace:^1.0.0",
     "colors": "^1.4.0",
     "dotenv": "^16.0.2",

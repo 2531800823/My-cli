@@ -6,10 +6,11 @@ const semver = require('semver');
 const colors = require('colors');
 const { homedir } = require('os');
 
+const { pathExists } = require('./utils');
 const pkg = require('../package.json');
 const log = require('@liushipeng/log');
 const constant = require('./const');
-const { pathExists } = require('./utils');
+const { getNpmInfo } = require('@liushipeng/get-npm-info');
 
 function core() {
   try {
@@ -18,9 +19,21 @@ function core() {
     checkRoot();
     checkUserHome();
     // checkEnv();
+    checkGlobalUpdate();
   } catch (e) {
     log.error(e.message);
   }
+}
+
+function checkGlobalUpdate() {
+  // 对比当前版本是否是最新
+  // 获取当前版本和模块名
+  const currentVersion = pkg.version;
+  const npmName = pkg.name;
+  // 调用 npm Api 获取版本号
+  getNpmInfo(npmName);
+  // 提取最大的版本号
+  // 获取最新版本号，提示用户更新到最新
 }
 
 function checkEnv() {
