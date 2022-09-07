@@ -17,9 +17,18 @@ function core() {
     checkNodeVersion();
     checkRoot();
     checkUserHome();
+    // checkEnv();
   } catch (e) {
     log.error(e.message);
   }
+}
+
+function checkEnv() {
+  // 读取环境变量
+  console.log(homedir());
+  const dotenv = require('dotenv');
+  let config = dotenv.config({});
+  console.info(config);
 }
 
 async function checkUserHome() {

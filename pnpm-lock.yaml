@@ -9,12 +9,14 @@ importers:
     specifiers:
       '@liushipeng/log': workspace:^1.0.0
       colors: ^1.4.0
+      dotenv: ^16.0.2
       import-local: ^3.1.0
       root-check: ^1.0.0
       semver: ^7.3.7
     dependencies:
       '@liushipeng/log': link:../../utils/log
       colors: 1.4.0
+      dotenv: registry.npmmirror.com/dotenv/16.0.2
       import-local: 3.1.0
       root-check: registry.npmmirror.com/root-check/1.0.0
       semver: 7.3.7
@@ -272,6 +274,13 @@ packages:
     name: default-uid
     version: 1.0.0
     engines: {node: '>=0.10.0'}
+    dev: false
+
+  registry.npmmirror.com/dotenv/16.0.2:
+    resolution: {integrity: sha512-JvpYKUmzQhYoIFgK2MOnF3bciIZoItIIoryihy0rIA+H4Jy0FmgyKYAHCTN98P5ybGSJcIFbh6QKeJdtZd1qhA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/dotenv/-/dotenv-16.0.2.tgz}
+    name: dotenv
+    version: 16.0.2
+    engines: {node: '>=12'}
     dev: false
 
   registry.npmmirror.com/downgrade-root/1.2.2:
