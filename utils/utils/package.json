@@ -1,5 +1,5 @@
 {
-  "name": "cli2",
+  "name": "@liushipeng/utils",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,5 +9,5 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "devDependencies": {}
+  "dependencies": {}
 }
