@@ -1,5 +1,5 @@
 {
-  "name": "@liushipeng/log",
+  "name": "@liushipeng-cli/log",
   "version": "1.0.0",
   "description": "扩展npmlog",
   "main": "./lib/index.js",

@@ -1,5 +1,5 @@
 {
-  "name": "@liushipeng/cli",
+  "name": "@liushipeng-cli/cli",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -13,8 +13,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@liushipeng/get-npm-info": "workspace:^1.0.0",
-    "@liushipeng/log": "workspace:^1.0.0",
+    "@liushipeng-cli/get-npm-info": "workspace:^1.0.0",
+    "@liushipeng-cli/log": "workspace:^1.0.0",
     "colors": "^1.4.0",
     "dotenv": "^16.0.2",
     "import-local": "^3.1.0",

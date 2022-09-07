@@ -1,5 +1,5 @@
 {
-  "name": "@liushipeng/get-npm-info",
+  "name": "@liushipeng-cli/get-npm-info",
   "version": "1.0.0",
   "description": "",
   "main": "./lib/index.js",

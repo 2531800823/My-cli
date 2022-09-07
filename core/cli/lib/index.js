@@ -8,9 +8,9 @@ const { homedir } = require('os');
 
 const { pathExists } = require('./utils');
 const pkg = require('../package.json');
-const log = require('@liushipeng/log');
+const log = require('@liushipeng-cli/log');
 const constant = require('./const');
-const { getNpmInfo } = require('@liushipeng/get-npm-info');
+const { getNpmInfo } = require('@liushipeng-cli/get-npm-info');
 
 function core() {
   try {
