@@ -35,9 +35,17 @@ importers:
 
   core/exec:
     specifiers:
+      '@liushipeng-cli/log': workspace:^1.0.0
       '@liushipeng-cli/package': workspace:^1.0.0
     dependencies:
+      '@liushipeng-cli/log': link:../../utils/log
       '@liushipeng-cli/package': link:../../modules/package
+
+  modules/package:
+    specifiers:
+      '@liushipeng-cli/utils': workspace:^1.0.0
+    dependencies:
+      '@liushipeng-cli/utils': link:../../utils/utils
 
   utils/get-npm-info:
     specifiers:

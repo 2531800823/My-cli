@@ -1,7 +1,8 @@
 const boxen = require('boxen');
 const colors = require('colors');
 
-const LOWEST_NODE_VERSION = '12.0.0';
+const LOWEST_NODE_VERSION = '12.0.0'; // node 最低版本
+const DEFAULT_CLI_HOME = '.liushipeng'; // 默认路径
 const GITHUB_PATH = 'https://github.com/2531800823';
 const NPM_PATH = 'https://www.npmjs.com/package/liushipeng-cli';
 
@@ -21,4 +22,5 @@ function NewVersionLog(currentVersion, newVersion) {
 module.exports = {
   LOWEST_NODE_VERSION,
   NewVersionLog,
+  DEFAULT_CLI_HOME,
 };

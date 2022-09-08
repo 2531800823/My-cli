@@ -11,5 +11,8 @@
   "license": "ISC",
   "publishConfig": {
     "access": "public"
+  },
+  "dependencies": {
+    "@liushipeng-cli/utils": "workspace:^1.0.0"
   }
 }

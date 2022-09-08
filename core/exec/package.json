@@ -13,6 +13,7 @@
     "access": "public"
   },
   "dependencies": {
+    "@liushipeng-cli/log": "workspace:^1.0.0",
     "@liushipeng-cli/package": "workspace:^1.0.0"
   }
 }

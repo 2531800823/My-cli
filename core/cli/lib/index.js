@@ -5,6 +5,7 @@ module.exports = core;
 const semver = require('semver');
 const colors = require('colors');
 const { homedir } = require('os');
+const path = require('path');
 const program = require('commander');
 
 const { pathExists } = require('@liushipeng-cli/utils');
@@ -16,11 +17,15 @@ const pkg = require('../package.json');
 const log = require('@liushipeng-cli/log');
 const constant = require('./const');
 
+// 获取 用户目录
+const userHome = homedir();
+
 function core() {
   try {
     checkPkgVersion();
     checkNodeVersion();
     checkRoot();
+    createDefaultConfig();
     checkUserHome();
     // checkEnv();
     checkGlobalUpdate();
@@ -65,6 +70,8 @@ function registerCommand() {
     if (commands.length > 0) {
       console.log(colors.green('可用命令：', commands.join(', ')));
     }
+    // TODO 记得删除
+    console.log(e);
   }
 }
 
@@ -84,15 +91,27 @@ async function checkGlobalUpdate() {
 
 function checkEnv() {
   // 读取环境变量
-  console.log(homedir());
+  console.log(userHome);
   const dotenv = require('dotenv');
   let config = dotenv.config({});
   console.info(config);
 }
 
+function createDefaultConfig() {
+  const cliConfig = {
+    home: userHome,
+  };
+  if (process.env.CLI_HOME) {
+    cliConfig['cliHome'] = path.join(userHome, process.env.CLI_HOME);
+  } else {
+    cliConfig['cliHome'] = path.join(userHome, constant.DEFAULT_CLI_HOME);
+  }
+  process.env.CLI_HOME_PATH = cliConfig.cliHome;
+}
+
 async function checkUserHome() {
   // 判断根目录是否存在
-  if (!(await pathExists(homedir()))) {
+  if (!(await pathExists(userHome))) {
     throw new Error(colors.red('当前登录用户的主目录不存在!!! '));
   }
 }
