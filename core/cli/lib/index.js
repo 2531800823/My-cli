@@ -28,9 +28,37 @@ function core() {
 }
 
 function registerCommand() {
-  program.name(Object.keys(pkg.bin)[0]).usage('<command> [options]').version(pkg.version);
+  console.log();
 
-  program.parse(process.argv);
+  program
+    .name(Object.keys(pkg.bin)[0])
+    .usage('<command> [options]')
+    .version(colors.blue('当前版本：' + pkg.version));
+
+  program
+    .command('init [projectName]')
+    .description('初始化项目')
+    .option('-f, --force', '是否强制初始化项目')
+    .action((projectName, cmdOnj) => {
+      console.log('init', projectName, cmdOnj);
+    });
+  // 遇到未知命令和拼写错误后，建议正确拼写
+  program.showSuggestionAfterError(true);
+
+  program.showHelpAfterError(colors.yellow('(使用 --help 查看帮助文档)'));
+  program.exitOverride();
+  try {
+    program.parse(process.argv);
+  } catch (e) {
+    console.log();
+    const obj = program.args;
+    if (obj.length < 1) return;
+    console.error(colors.red('出错了！未知的命令：', obj[0]));
+    const commands = program.commands.map((cmd) => cmd.name());
+    if (commands.length > 0) {
+      console.log(colors.green('可用命令：', commands.join(', ')));
+    }
+  }
 }
 
 async function checkGlobalUpdate() {
