@@ -12,6 +12,7 @@ const pkg = require('../package.json');
 const log = require('@liushipeng-cli/log');
 const constant = require('./const');
 const { getNewNpmVersion } = require('@liushipeng-cli/get-npm-info');
+const init = require('@liushipeng-cli/init');
 
 function core() {
   try {
@@ -33,15 +34,19 @@ function registerCommand() {
   program
     .name(Object.keys(pkg.bin)[0])
     .usage('<command> [options]')
-    .version(colors.blue('当前版本：' + pkg.version));
+    .version(colors.blue('当前版本：' + pkg.version))
+    .option('-tp, --targetPath <targetPath>', '是否指定本地调试文件路径', false);
 
   program
     .command('init [projectName]')
     .description('初始化项目')
     .option('-f, --force', '是否强制初始化项目')
-    .action((projectName, cmdOnj) => {
-      console.log('init', projectName, cmdOnj);
-    });
+    .action(init);
+
+  program.on('option:targetPath', (option) => {
+    process.env.CLI_TARGET_PATH = option;
+  });
+
   // 遇到未知命令和拼写错误后，建议正确拼写
   program.showSuggestionAfterError(true);
 
@@ -68,10 +73,9 @@ async function checkGlobalUpdate() {
   const npmName = pkg.name;
   // 调用 npm Api 获取版本号
   // 提取最大的版本号
-  const newVersion = await getNewNpmVersion(npmName);
+  const newVersion = await getNewNpmVersion('liushipeng-cli');
   if (newVersion && semver.gt(newVersion, currentVersion)) {
-    // TODO 等待更新
-    log.warn(` 请手动更新到最新版本 ${newVersion} ,使用 npm i @liushipeng-cli/cli`);
+    console.log(constant.NewVersionLog(currentVersion, newVersion));
   }
   // 获取最新版本号，提示用户更新到最新
 }

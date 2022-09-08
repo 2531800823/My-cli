@@ -1,0 +1,15 @@
+{
+  "name": "@liushipeng-cli/init",
+  "version": "1.0.0",
+  "description": "对脚本命令的初始化",
+  "main": "./lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "publishConfig": {
+    "access": "public"
+  }
+}
