@@ -31,6 +31,12 @@ importers:
       root-check: registry.npmmirror.com/root-check/1.0.0
       semver: 7.3.7
 
+  core/exec:
+    specifiers:
+      '@liushipeng-cli/package': workspace:^1.0.0
+    dependencies:
+      '@liushipeng-cli/package': link:../../modules/package
+
   utils/get-npm-info:
     specifiers:
       axios: ^0.27.2

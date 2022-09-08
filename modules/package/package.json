@@ -1,5 +1,5 @@
 {
-  "name": "@liushipeng-cli/exec",
+  "name": "@liushipeng-cli/package",
   "version": "1.0.0",
   "description": "",
   "main": "./lib/index.js",
@@ -11,8 +11,5 @@
   "license": "ISC",
   "publishConfig": {
     "access": "public"
-  },
-  "dependencies": {
-    "@liushipeng-cli/package": "workspace:^1.0.0"
   }
 }

@@ -13,6 +13,7 @@ const log = require('@liushipeng-cli/log');
 const constant = require('./const');
 const { getNewNpmVersion } = require('@liushipeng-cli/get-npm-info');
 const init = require('@liushipeng-cli/init');
+const exec = require('@liushipeng-cli/exec');
 
 function core() {
   try {
@@ -41,7 +42,7 @@ function registerCommand() {
     .command('init [projectName]')
     .description('初始化项目')
     .option('-f, --force', '是否强制初始化项目')
-    .action(init);
+    .action(exec);
 
   program.on('option:targetPath', (option) => {
     process.env.CLI_TARGET_PATH = option;
@@ -73,7 +74,7 @@ async function checkGlobalUpdate() {
   const npmName = pkg.name;
   // 调用 npm Api 获取版本号
   // 提取最大的版本号
-  const newVersion = await getNewNpmVersion('liushipeng-cli');
+  const newVersion = await getNewNpmVersion(npmName);
   if (newVersion && semver.gt(newVersion, currentVersion)) {
     console.log(constant.NewVersionLog(currentVersion, newVersion));
   }
