@@ -7,13 +7,14 @@ const colors = require('colors');
 const { homedir } = require('os');
 const program = require('commander');
 
-const { pathExists } = require('./utils');
-const pkg = require('../package.json');
-const log = require('@liushipeng-cli/log');
-const constant = require('./const');
+const { pathExists } = require('@liushipeng-cli/utils');
 const { getNewNpmVersion } = require('@liushipeng-cli/get-npm-info');
 const init = require('@liushipeng-cli/init');
 const exec = require('@liushipeng-cli/exec');
+
+const pkg = require('../package.json');
+const log = require('@liushipeng-cli/log');
+const constant = require('./const');
 
 function core() {
   try {

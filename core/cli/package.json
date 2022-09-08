@@ -20,6 +20,7 @@
     "@liushipeng-cli/get-npm-info": "workspace:^1.0.0",
     "@liushipeng-cli/init": "workspace:^1.0.0",
     "@liushipeng-cli/log": "workspace:^1.0.0",
+    "@liushipeng-cli/utils": "workspace:^1.0.0",
     "boxen": "^5.1.2",
     "colors": "^1.4.0",
     "commander": "^9.4.0",
