@@ -5,6 +5,7 @@ module.exports = core;
 const semver = require('semver');
 const colors = require('colors');
 const { homedir } = require('os');
+const program = require('commander');
 
 const { pathExists } = require('./utils');
 const pkg = require('../package.json');
@@ -20,9 +21,16 @@ function core() {
     checkUserHome();
     // checkEnv();
     checkGlobalUpdate();
+    registerCommand();
   } catch (e) {
     log.error(e.message);
   }
+}
+
+function registerCommand() {
+  program.name(Object.keys(pkg.bin)[0]).usage('<command> [options]').version(pkg.version);
+
+  program.parse(process.argv);
 }
 
 async function checkGlobalUpdate() {
@@ -32,7 +40,7 @@ async function checkGlobalUpdate() {
   const npmName = pkg.name;
   // 调用 npm Api 获取版本号
   // 提取最大的版本号
-  const newVersion = await getNewNpmVersion('liushipeng-cli');
+  const newVersion = await getNewNpmVersion(npmName);
   if (newVersion && semver.gt(newVersion, currentVersion)) {
     // TODO 等待更新
     log.warn(` 请手动更新到最新版本 ${newVersion} ,使用 npm i @liushipeng-cli/cli`);

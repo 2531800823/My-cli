@@ -1,6 +1,7 @@
 const axios = require('axios');
 const semver = require('semver');
 const urlJoin = require('url-join');
+const log = require('npmlog');
 
 function getNpmInfo(npmName, registry) {
   if (!npmName) return;
@@ -15,7 +16,7 @@ function getNpmInfo(npmName, registry) {
       return null;
     })
     .catch((err) => {
-      return Promise.reject(err);
+      log.warn(err.message);
     });
 }
 

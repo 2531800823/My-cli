@@ -14,6 +14,7 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.27.2",
+    "npmlog": "^6.0.2",
     "semver": "^7.3.7",
     "url-join": "^4.0.1"
   }
